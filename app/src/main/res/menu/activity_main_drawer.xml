@@ -3,7 +3,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+
+
+    <group android:id="@+id/group_dialog_fragm">
+
+        <item android:title="DialogFragment"
+            android:enabled="false">
+        </item>
+
+        <item
+            android:id="@+id/df_type0"
+            android:title="NORMAL"
+            android:icon="@drawable/ic_menu_send">
+        </item>
+        <item
+            android:id="@+id/df_type1"
+            android:title="NO_TITLE "
+            android:icon="@drawable/ic_menu_send">
+        </item>
+        <item
+            android:id="@+id/df_type2"
+            android:title="NO_FRAME"
+            android:icon="@drawable/ic_menu_send">
+        </item>
+        <item
+            android:id="@+id/df_type3"
+            android:title="NO_INPUT"
+            android:icon="@drawable/ic_menu_send">
+        </item>
+        <item
+            android:id="@+id/df_type4"
+            android:title="NORMAL Theme_Holo"
+            android:icon="@drawable/ic_menu_send">
+        </item>
+        <item
+            android:id="@+id/df_type5"
+            android:title="NORMAL Theme_Holo_Light_Dialog"
+            android:icon="@drawable/ic_menu_send">
+        </item>
+        <item
+            android:id="@+id/df_type6"
+            android:title="NO_TITLE Theme_Holo_Light"
+            android:icon="@drawable/ic_menu_send">
+        </item>
+        <item
+            android:id="@+id/df_type7"
+            android:title="NO_FRAME heme_Holo_Light_Panel"
+            android:icon="@drawable/ic_menu_send">
+        </item>
+        <item
+            android:id="@+id/df_type8"
+            android:title="NORMAL Theme_Holo_Light"
+            android:icon="@drawable/ic_menu_send">
+        </item>
+    </group>
+
+
+
+
+    <group
+        android:id="@+id/grupo3"
+        android:title="group_other"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"

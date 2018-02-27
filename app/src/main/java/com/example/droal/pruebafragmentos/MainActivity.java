@@ -1,8 +1,12 @@
 package com.example.droal.pruebafragmentos;
 
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,6 +71,7 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        int group = item.getGroupId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
@@ -74,14 +81,84 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        int itemId = item.getItemId();
+        int groupId = item.getGroupId();
+
+
+        switch (groupId){
+            case R.id.group_dialog_fragm:
+
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Fragment prevfragment = fragmentManager.findFragmentByTag("dialog_frag");
+
+                if(prevfragment != null){
+                    fragmentTransaction.remove(prevfragment);
+                }
+
+                int dialogType = 0;
+                switch (itemId){
+                    case R.id.df_type1:
+                        dialogType = 1;
+                        break;
+                    case R.id.df_type2:
+                        dialogType = 2;
+                        break;
+                    case R.id.df_type3:
+                        dialogType = 3;
+                        break;
+                    case R.id.df_type4:
+                        dialogType = 4;
+                        break;
+                    case R.id.df_type5:
+                        dialogType = 5;
+                        break;
+                    case R.id.df_type6:
+                        dialogType = 6;
+                        break;
+                    case R.id.df_type7:
+                        dialogType = 7;
+                        break;
+                    case R.id.df_type8:
+                        dialogType = 8;
+                        break;
+                }
+
+                DialogFragment dialogFragment = DialogFragment.newInstance(dialogType);
+                dialogFragment.show(fragmentManager,"dialog_frag");
+                break;
+
+        }
+
+
+ /*
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+
+            //remove if exist previous dialog
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            Fragment prevfragment = fragmentManager.findFragmentByTag("dialog_frag");
+
+            if(prevfragment != null){
+                fragmentTransaction.remove(prevfragment);
+            }
+
+            Random random = new Random();
+            //(random from 0 to 7) +1
+            int dialogType = random.nextInt(8)+1;
+
+            DialogFragment dialogFragment = DialogFragment.newInstance(dialogType);
+            dialogFragment.show(fragmentManager,"dialog_frag");
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -93,8 +170,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
-
+*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
