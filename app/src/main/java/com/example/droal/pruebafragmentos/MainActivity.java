@@ -107,74 +107,45 @@ public class MainActivity extends AppCompatActivity
                 int dialogType = 0;
                 switch (itemId){
                     case R.id.df_type1:
-                        dialogType = 1;
+                        showDialog(1,fragmentManager);
                         break;
                     case R.id.df_type2:
-                        dialogType = 2;
+                        showDialog(2,fragmentManager);
                         break;
                     case R.id.df_type3:
-                        dialogType = 3;
+                        showDialog(3,fragmentManager);
                         break;
                     case R.id.df_type4:
-                        dialogType = 4;
+                        showDialog(4,fragmentManager);
                         break;
                     case R.id.df_type5:
-                        dialogType = 5;
+                        showDialog(5,fragmentManager);
                         break;
                     case R.id.df_type6:
-                        dialogType = 6;
+                        showDialog(6,fragmentManager);
                         break;
                     case R.id.df_type7:
-                        dialogType = 7;
+                        showDialog(7,fragmentManager);
                         break;
                     case R.id.df_type8:
-                        dialogType = 8;
+                        showDialog(8,fragmentManager);
+                        break;
+                    case R.id.alert_dialog:
+                        AlertDialogFragment alertDialogFragment = AlertDialogFragment.getInstance(R.string.alert_dialog_fragment_title);
+                        alertDialogFragment.show(fragmentManager, "alert_dialog_frag");
                         break;
                 }
 
-                DialogFragment dialogFragment = DialogFragment.newInstance(dialogType);
-                dialogFragment.show(fragmentManager,"dialog_frag");
                 break;
-
         }
 
-
- /*
-
-        if (id == R.id.nav_camera) {
-
-            //remove if exist previous dialog
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            Fragment prevfragment = fragmentManager.findFragmentByTag("dialog_frag");
-
-            if(prevfragment != null){
-                fragmentTransaction.remove(prevfragment);
-            }
-
-            Random random = new Random();
-            //(random from 0 to 7) +1
-            int dialogType = random.nextInt(8)+1;
-
-            DialogFragment dialogFragment = DialogFragment.newInstance(dialogType);
-            dialogFragment.show(fragmentManager,"dialog_frag");
-
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showDialog(int dialogType, FragmentManager fragmentManager){
+        DialogFragment dialogFragment = DialogFragment.newInstance(dialogType);
+        dialogFragment.show(fragmentManager,"dialog_frag");
     }
 }

@@ -56,6 +56,11 @@
             android:title="NORMAL Theme_Holo_Light"
             android:icon="@drawable/ic_menu_send">
         </item>
+        <item
+            android:id="@+id/alert_dialog"
+            android:title="Alert Dialog"
+            android:icon="@drawable/ic_menu_send">
+        </item>
     </group>
 
 
