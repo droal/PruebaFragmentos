@@ -1,6 +1,7 @@
 package com.example.droal.pruebafragmentos;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,6 +22,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +95,12 @@ public class MainActivity extends AppCompatActivity
         int groupId = item.getGroupId();
 
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
         switch (groupId){
             case R.id.group_dialog_fragm:
 
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Fragment prevfragment = fragmentManager.findFragmentByTag("dialog_frag");
 
                 if(prevfragment != null){
@@ -131,11 +134,26 @@ public class MainActivity extends AppCompatActivity
                         showDialog(8,fragmentManager);
                         break;
                     case R.id.alert_dialog:
-                        AlertDialogFragment alertDialogFragment = AlertDialogFragment.getInstance(R.string.alert_dialog_fragment_title);
-                        alertDialogFragment.show(fragmentManager, "alert_dialog_frag");
+                        showAlert(fragmentManager);
                         break;
                 }
 
+                break;
+
+            case R.id.group_list_fragment:
+                Boolean listItemCustom = false;
+
+                switch (itemId){
+                    case R.id.lf_default:
+                         break;
+                    case R.id.lf_custom:
+                        listItemCustom = true;
+                        break;
+                }
+
+                Intent intent = new Intent(this,ListActivity.class);
+                intent.putExtra("list_item_custom", listItemCustom);
+                startActivity(intent);
                 break;
         }
 
@@ -147,5 +165,17 @@ public class MainActivity extends AppCompatActivity
     private void showDialog(int dialogType, FragmentManager fragmentManager){
         DialogFragment dialogFragment = DialogFragment.newInstance(dialogType);
         dialogFragment.show(fragmentManager,"dialog_frag");
+    }
+
+
+    private void showAlert(FragmentManager fragmentManager){
+        AlertDialogFragment alertDialogFragment = AlertDialogFragment.getInstance(R.string.alert_dialog_fragment_title);
+        alertDialogFragment.show(fragmentManager, "alert_dialog_frag");
+
+    }
+
+    private void showListFragment(int type, FragmentManager fragmentManager){
+
+
     }
 }

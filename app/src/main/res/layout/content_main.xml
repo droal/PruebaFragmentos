@@ -13,13 +13,14 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="21dp"
-        android:text="Este es el contenedor de la actividad main"
+        android:text="This is the container to MainActivity"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout
+        android:id="@+id/main_container_fl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
@@ -33,10 +34,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <fragment
-            android:id="@+id/fragment"
+            android:id="@+id/main_init_fragment"
             android:name="com.example.droal.pruebafragmentos.InitialFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:tag="main_init_fragment" />
     </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
